@@ -4,7 +4,7 @@
 
 def main():
     for x in range(3):
-        in = float(prompt("Enter number of inches for trial " + str(x) + ":"))
-        cm = in * 2.54
-        print(str(in) + " inches is equal to + str(cm) + " centimeters.")
+        inch = float(input("Enter number of inches for trial " + str(x) + ":"))
+        cm = inch * 2.54
+        print(str(inch) + " inches is equal to" + str(cm) + " centimeters.")
 main()
