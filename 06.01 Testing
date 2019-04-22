@@ -1,0 +1,10 @@
+# Reid Harry
+# 4/21/2019
+# Converts measurements from inches to centimeters
+
+def main():
+    for x in range(3):
+        in = float(prompt("Enter number of inches for trial " + str(x) + ":"))
+        cm = in * 2.54
+        print(str(in) + " inches is equal to + str(cm) + " centimeters.")
+main()
