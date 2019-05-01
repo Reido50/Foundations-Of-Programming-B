@@ -4,13 +4,24 @@
 # Converts between length units based on user input
 
 from math import *
+import sys
 
 lengthUnits = ["cm", "in", "ft", "yd", "m", "km", "mi"]
+unitStr = ""
 lengthConversions = [1.0, 2.54, 12.0, 3.0, 1.09361, 1000.0, 1.60934]
 lengthUnitPos = -1
 newLengthUnitPos = 0
 userUnit = ""
 userVal = 0.0
+
+def listConcat(list):
+    global unitStr
+
+    for x in range(len(list)):
+        if(x < len(list)-1):
+            unitStr += list[x] + ", "
+        else:
+            unitStr += list[x]
 
 def convert(old, new):
     global lengthConversions
@@ -26,6 +37,7 @@ def convert(old, new):
 
 def promptUnit():
     global lengthUnits
+    global UnitStr
     global lengthUnitPos
     global newLengthUnitPos
     global userUnit
@@ -33,14 +45,14 @@ def promptUnit():
     while(userUnit == ""):
         # Prompt user for a length unit
         if(lengthUnitPos == -1):
-            userUnit = input("Which unit of length would you like to start with (cm, in, ft, yd, m, km, mi)? Enter 'stop' to quit program:").lower()
+            userUnit = input("Which unit of length would you like to start with (" + unitStr  + ")? Enter 'stop' to quit program:").lower()
         else:
-            userUnit = input("Which unit of length would you like to convert to (cm, in, ft, yd, m, km, mi)? Enter 'stop' to quit program:").lower()
+            userUnit = input("Which unit of length would you like to convert to (" + unitStr + ")? Enter 'stop' to quit program:").lower()
 
         # Check for stop
         if(userUnit == "stop"):
             print("Thank you for using the Length Unit Coversion Calculator!")
-            quit()
+            sys.exit()
 
         # Check for length unit in constant list
         for u in range(len(lengthUnits)):
@@ -61,6 +73,9 @@ def promptMeasure():
 
 def main():
     global userUnit
+    global lengthUnits
+    
+    listConcat(lengthUnits)
 
     print("Length Unit Conversion Calculator")
     print("---------------------------------")
@@ -78,4 +93,5 @@ def main():
 
         # Print answer
         print(str(round(userVal, 3)) + " " + userUnit)
+
 main()
