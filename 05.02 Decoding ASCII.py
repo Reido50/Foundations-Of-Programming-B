@@ -2,6 +2,7 @@
 # 03/06/2019
 # This program's function is to encode and decode a message
 
+
 def main():
     code = []
     message = ""
@@ -16,4 +17,6 @@ def main():
         message += chr(n)
 
     print(message)
+
+
 main()

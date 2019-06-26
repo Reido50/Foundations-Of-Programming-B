@@ -14,6 +14,7 @@ newLengthUnitPos = 0
 userUnit = ""
 userVal = 0.0
 
+
 def listConcat(list):
     global unitStr
 
@@ -23,17 +24,19 @@ def listConcat(list):
         else:
             unitStr += list[x]
 
+
 def convert(old, new):
     global lengthConversions
-    global userVal 
-    
+    global userVal
+
     if(old != -1):
         increment = int(copysign(1.0, new - old))
         for x in range(int(old), int(new), increment):
             if(increment > 0):
-                userVal/=lengthConversions[x+increment]
+                userVal /= lengthConversions[x+increment]
             elif(increment < 0):
-                userVal*=lengthConversions[x]
+                userVal *= lengthConversions[x]
+
 
 def promptUnit():
     global lengthUnits
@@ -45,9 +48,11 @@ def promptUnit():
     while(userUnit == ""):
         # Prompt user for a length unit
         if(lengthUnitPos == -1):
-            userUnit = input("Which unit of length would you like to start with (" + unitStr  + ")? Enter 'stop' to quit program:").lower()
+            userUnit = input("Which unit of length would you like to start with (" +
+                             unitStr + ")? Enter 'stop' to quit program:").lower()
         else:
-            userUnit = input("Which unit of length would you like to convert to (" + unitStr + ")? Enter 'stop' to quit program:").lower()
+            userUnit = input("Which unit of length would you like to convert to (" +
+                             unitStr + ")? Enter 'stop' to quit program:").lower()
 
         # Check for stop
         if(userUnit == "stop"):
@@ -65,16 +70,19 @@ def promptUnit():
                 userUnit = ""
                 print("The unit you chose was not found. Try again.")
 
+
 def promptMeasure():
     global userVal
     global userUnit
 
-    userVal = abs(float(input("Enter the measurement you would like to use (" + str(userUnit) + "):")))
+    userVal = abs(float(
+        input("Enter the measurement you would like to use (" + str(userUnit) + "):")))
+
 
 def main():
     global userUnit
     global lengthUnits
-    
+
     listConcat(lengthUnits)
 
     print("Length Unit Conversion Calculator")
@@ -93,5 +101,6 @@ def main():
 
         # Print answer
         print(str(round(userVal, 3)) + " " + userUnit)
+
 
 main()
